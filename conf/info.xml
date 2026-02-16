@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+	<title xml:lang="ko">라이믹스 모듈 예제</title>
+	<description xml:lang="ko">라이믹스 모듈 예제입니다.</description>
+	<version>1.0.0</version>
+	<date>2026-02-17</date>
+	<category>service</category>
+	<author email_address="developer@example.com" link="https://example.com">
+		<name xml:lang="ko">Developer</name>
+	</author>
+</module>
