@@ -17,6 +17,8 @@
 		</action>
 		<!-- 글쓰기 POST 액션 예제 -->
 		<action name="procModule_exampleWrite" class="Controllers\Write" permission="member" />
+		<!-- 유저 입력 화면 예제 -->
+		<action name="dispModule_exampleUserInput" class="Controllers\UserInput" />
 	</actions>
 	<!-- 이벤트 핸들러 (트리거) 선언 -->
 	<eventHandlers>

@@ -2,6 +2,9 @@
 
 namespace Rhymix\Modules\Module_example\Controllers;
 
+use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Context;
+
 /**
  * 라이믹스 모듈 예제
  * 
@@ -18,6 +21,10 @@ class Read extends Base
 	{
 		// 스킨 또는 뷰 경로 지정
 		$this->setTemplatePath($this->module_path . 'skins/' . ($this->module_info->skin ?: 'default'));
+
+		// 관리자 설정값을 Context에 세팅
+		$config = ConfigModel::getConfig();
+		Context::set('config', $config);
 	}
 	
 	/**
