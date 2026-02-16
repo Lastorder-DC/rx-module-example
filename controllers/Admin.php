@@ -64,6 +64,27 @@ class Admin extends Base
 			return new BaseObject(-1, '설정값이 이상함');
 		}
 
+		// 라디오박스 설정 저장
+		if (in_array($vars->radio_config, ['A', 'B', 'C']))
+		{
+			$config->radio_config = $vars->radio_config;
+		}
+
+		// 체크박스 설정 저장
+		$config->checkbox_config = is_array($vars->checkbox_config) ? array_values(array_intersect($vars->checkbox_config, ['item1', 'item2', 'item3'])) : [];
+
+		// 한줄 input 설정 저장
+		$config->input_config = strval($vars->input_config ?? '');
+
+		// 한줄 input 다국어 설정 저장
+		$config->input_mlang_config = $vars->input_mlang_config ?? '';
+
+		// textarea 설정 저장
+		$config->textarea_config = strval($vars->textarea_config ?? '');
+
+		// textarea 다국어 설정 저장
+		$config->textarea_mlang_config = $vars->textarea_mlang_config ?? '';
+
 		// 변경된 설정을 저장
 		$output = ConfigModel::setConfig($config);
 		if (!$output->toBool())
