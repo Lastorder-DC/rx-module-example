@@ -1,0 +1,50 @@
+<config autoescape="on" />
+<load target="css/skin.scss" />
+<load target="js/skin.js" />
+
+<div class="module_example">
+	<h2>{$lang->cmd_module_example_list}</h2>
+
+	<table class="item-list">
+		<thead>
+			<tr>
+				<th>{$lang->title}</th>
+				<th>{$lang->writer}</th>
+				<th>{$lang->date}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<block loop="$item_list=>$item">
+			<tr>
+				<td><a href="{getUrl('act','dispModule_exampleRead','item_srl',$item->item_srl)}">{$item->title}</a></td>
+				<td>{$item->nick_name}</td>
+				<td>{zdate($item->regdate, 'Y-m-d')}</td>
+			</tr>
+			</block>
+			<block cond="!$item_list || !count($item_list)">
+			<tr>
+				<td colspan="3">{$lang->no_documents}</td>
+			</tr>
+			</block>
+		</tbody>
+	</table>
+
+	<!--@if($page_navigation)-->
+	<div class="pagination">
+		<!--@if($page_navigation->cur_page > 1)-->
+		<a href="{getUrl('page', $page_navigation->cur_page - 1)}">&laquo; {$lang->cmd_prev}</a>
+		<!--@end-->
+		<block loop="$page_navigation->getNextPage()=>$pg_page" cond="$pg_page">
+		<a href="{getUrl('page', $pg_page)}" class="<!--@if($pg_page == $page_navigation->cur_page)-->active<!--@end-->">{$pg_page}</a>
+		</block>
+		<!--@if($page_navigation->cur_page < $page_navigation->last_page)-->
+		<a href="{getUrl('page', $page_navigation->cur_page + 1)}">{$lang->cmd_next} &raquo;</a>
+		<!--@end-->
+	</div>
+	<!--@end-->
+
+	<div class="btnArea">
+		<a href="{getUrl('act','dispModule_exampleWrite')}">{$lang->cmd_module_example_write}</a>
+		<a href="{getUrl('act','dispModule_exampleIndex')}">{$lang->cmd_module_example_back_to_index}</a>
+	</div>
+</div>

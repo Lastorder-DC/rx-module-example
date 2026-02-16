@@ -27,3 +27,5 @@ $lang->cmd_module_example_user_textarea = 'Textarea 입력';
 $lang->cmd_module_example_user_radio = '라디오 선택';
 $lang->cmd_module_example_user_checkbox = '체크박스 선택';
 $lang->cmd_module_example_back_to_index = '메인으로 돌아가기';
+$lang->cmd_module_example_write = '글쓰기';
+$lang->cmd_module_example_list = '글 목록';

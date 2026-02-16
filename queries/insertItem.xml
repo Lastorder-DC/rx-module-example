@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<query id="insertItem" action="insert">
+	<tables>
+		<table name="module_example_items" />
+	</tables>
+	<columns>
+		<column name="item_srl" var="item_srl" filter="number" notnull="notnull" />
+		<column name="module_srl" var="module_srl" filter="number" notnull="notnull" />
+		<column name="member_srl" var="member_srl" filter="number" notnull="notnull" />
+		<column name="user_id" var="user_id" />
+		<column name="user_name" var="user_name" />
+		<column name="nick_name" var="nick_name" />
+		<column name="title" var="title" notnull="notnull" />
+		<column name="content" var="content" />
+		<column name="regdate" var="regdate" />
+		<column name="last_update" var="last_update" />
+		<column name="ipaddress" var="ipaddress" />
+	</columns>
+</query>
