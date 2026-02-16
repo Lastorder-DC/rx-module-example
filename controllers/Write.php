@@ -71,13 +71,13 @@ class Write extends Base
 		$vars = Context::getRequestVars();
 
 		// 제목 필수값 확인
-		$title = escape(trim($vars->title ?? ''));
+		$title = escape(trim($vars->title ?? ''), false);
 		if (!$title)
 		{
 			return new \BaseObject(-1, 'msg_invalid_request');
 		}
 
-		$content = escape(trim($vars->content ?? ''));
+		$content = escape(trim($vars->content ?? ''), false);
 		$item_srl = intval($vars->item_srl ?? 0);
 
 		// 수정 모드
