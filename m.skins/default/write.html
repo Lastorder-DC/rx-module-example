@@ -1,0 +1,30 @@
+<config autoescape="on" />
+<load target="css/skin.scss" />
+<load target="js/skin.js" />
+
+<div class="module_example">
+	<h2>{$lang->cmd_module_example_write}</h2>
+
+	<form method="post" action="./">
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="act" value="procModule_exampleWrite" />
+		<input type="hidden" name="item_srl" value="{$item->item_srl}" />
+
+		<!-- 제목 -->
+		<div class="form-group">
+			<label for="title">{$lang->title}</label>
+			<input type="text" name="title" id="title" value="{$item->title}" required="required" />
+		</div>
+
+		<!-- 내용 -->
+		<div class="form-group">
+			<label for="content">{$lang->content}</label>
+			<textarea name="content" id="content" rows="10" cols="60">{$item->content}</textarea>
+		</div>
+
+		<div class="btnArea">
+			<button type="submit">{$lang->cmd_submit}</button>
+			<a href="{getUrl('act','dispModule_exampleList')}">{$lang->cmd_cancel}</a>
+		</div>
+	</form>
+</div>

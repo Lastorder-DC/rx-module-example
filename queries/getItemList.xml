@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<query id="getItemList" action="select">
+	<tables>
+		<table name="module_example_items" />
+	</tables>
+	<columns>
+		<column name="*" />
+	</columns>
+	<conditions>
+		<condition operation="equal" column="module_srl" var="module_srl" filter="number" notnull="notnull" />
+	</conditions>
+	<navigation>
+		<index var="sort_index" default="item_srl" order="desc" />
+		<list_count var="list_count" default="20" />
+		<page_count var="page_count" default="10" />
+		<page var="page" default="1" />
+	</navigation>
+</query>

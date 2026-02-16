@@ -17,6 +17,10 @@
 		</action>
 		<!-- 글쓰기 POST 액션 예제 -->
 		<action name="procModule_exampleWrite" class="Controllers\Write" permission="member" />
+		<!-- 글 삭제 POST 액션 -->
+		<action name="procModule_exampleDelete" class="Controllers\Delete" permission="member" />
+		<!-- 글 목록 화면 -->
+		<action name="dispModule_exampleList" class="Controllers\ItemList" route="list" />
 		<!-- 유저 입력 화면 예제 -->
 		<action name="dispModule_exampleUserInput" class="Controllers\UserInput" />
 	</actions>

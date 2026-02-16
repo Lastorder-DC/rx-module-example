@@ -22,9 +22,9 @@ class Write extends Base
 		// 스킨 또는 뷰 경로 지정
 		$this->setTemplatePath($this->module_path . 'skins/' . ($this->module_info->skin ?: 'default'));
 
-		// 관리자 설정값을 Context에 세팅
+		// 필요한 설정값만 선택적으로 Context에 세팅
 		$config = ConfigModel::getConfig();
-		Context::set('config', $config);
+		Context::set('example_config', $config->example_config ?? '');
 	}
 	
 	/**
@@ -32,6 +32,25 @@ class Write extends Base
 	 */
 	public function dispModule_exampleWrite()
 	{
+		// 수정 모드인 경우 기존 글 데이터 가져오기
+		$item_srl = Context::get('item_srl');
+		if ($item_srl)
+		{
+			$args = new \stdClass;
+			$args->item_srl = $item_srl;
+			$output = executeQuery('module_example.getItem', $args);
+			if ($output->toBool() && $output->data)
+			{
+				// 작성자 본인 확인
+				$logged_info = Context::get('logged_info');
+				if (!$logged_info || ($output->data->member_srl != $logged_info->member_srl && !$logged_info->is_admin))
+				{
+					return $this->stop('msg_not_permitted');
+				}
+				Context::set('item', $output->data);
+			}
+		}
+
 		// 뷰 파일명 지정
 		$this->setTemplateFile('write');
 	}
@@ -41,9 +60,82 @@ class Write extends Base
 	 */
 	public function procModule_exampleWrite()
 	{
-		// XE에서는 view와 controller로 분리되어 있었으나,
-		// 네임스페이스를 사용하여 각각의 클래스를 여러 개로 나눌 수 있게 되었으므로
-		// 연관된 기능들을 하나의 클래스에 모아서 편리하게 관리할 수 있습니다.
-		// GET, POST 액션은 여전히 disp, proc으로 구분합니다.
+		// 로그인 확인
+		$logged_info = Context::get('logged_info');
+		if (!$logged_info)
+		{
+			return new \BaseObject(-1, 'msg_not_logged');
+		}
+
+		// 제출받은 데이터 불러오기
+		$vars = Context::getRequestVars();
+
+		// 제목 필수값 확인
+		$title = trim($vars->title ?? '');
+		if (!$title)
+		{
+			return new \BaseObject(-1, 'msg_invalid_request');
+		}
+
+		$content = trim($vars->content ?? '');
+		$item_srl = intval($vars->item_srl ?? 0);
+
+		// 수정 모드
+		if ($item_srl)
+		{
+			// 기존 글 확인
+			$args = new \stdClass;
+			$args->item_srl = $item_srl;
+			$output = executeQuery('module_example.getItem', $args);
+			if (!$output->toBool() || !$output->data)
+			{
+				return new \BaseObject(-1, 'msg_not_founded');
+			}
+
+			// 작성자 본인 확인
+			if ($output->data->member_srl != $logged_info->member_srl && !$logged_info->is_admin)
+			{
+				return new \BaseObject(-1, 'msg_not_permitted');
+			}
+
+			// 업데이트
+			$update_args = new \stdClass;
+			$update_args->item_srl = $item_srl;
+			$update_args->title = $title;
+			$update_args->content = $content;
+			$update_args->last_update = date('YmdHis');
+			$output = executeQuery('module_example.updateItem', $update_args);
+			if (!$output->toBool())
+			{
+				return $output;
+			}
+		}
+		// 신규 작성
+		else
+		{
+			$item_srl = getNextSequence();
+
+			$args = new \stdClass;
+			$args->item_srl = $item_srl;
+			$args->module_srl = $this->module_info->module_srl;
+			$args->member_srl = $logged_info->member_srl;
+			$args->user_id = $logged_info->user_id;
+			$args->user_name = $logged_info->user_name;
+			$args->nick_name = $logged_info->nick_name;
+			$args->title = $title;
+			$args->content = $content;
+			$args->regdate = date('YmdHis');
+			$args->last_update = date('YmdHis');
+			$args->ipaddress = \RX_CLIENT_IP;
+			$output = executeQuery('module_example.insertItem', $args);
+			if (!$output->toBool())
+			{
+				return $output;
+			}
+		}
+
+		// 작성된 글로 리다이렉트
+		$this->setMessage('success_registed');
+		$this->setRedirectUrl(getNotEncodedUrl('', 'mid', $this->mid, 'act', 'dispModule_exampleRead', 'item_srl', $item_srl));
 	}
 }

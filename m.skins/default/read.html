@@ -1,0 +1,24 @@
+<config autoescape="on" />
+<load target="css/skin.scss" />
+<load target="js/skin.js" />
+
+<div class="module_example">
+	<h2>{$item->title}</h2>
+
+	<div class="item-meta">
+		<span class="author">{$item->nick_name}</span>
+		<span class="date">{zdate($item->regdate, 'Y-m-d H:i')}</span>
+	</div>
+
+	<div class="item-content">
+		{htmlspecialchars_decode($item->content)}
+	</div>
+
+	<div class="btnArea">
+		<a href="{getUrl('act','dispModule_exampleList')}">{$lang->cmd_list}</a>
+		<!--@if($logged_info->member_srl == $item->member_srl || $logged_info->is_admin == 'Y')-->
+		<a href="{getUrl('act','dispModule_exampleWrite','item_srl',$item->item_srl)}">{$lang->cmd_modify}</a>
+		<a href="#" onclick="if(confirm('{$lang->confirm_delete}')){{exec_json('procModule_exampleDelete',{item_srl:'{$item->item_srl}'},function(ret){{location.href='{getUrl('act','dispModule_exampleList')}';}});}return false;">{$lang->cmd_delete}</a>
+		<!--@end-->
+	</div>
+</div>

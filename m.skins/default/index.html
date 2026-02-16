@@ -9,35 +9,36 @@
 	<table border="1" cellpadding="5" cellspacing="0">
 		<tr>
 			<th>{$lang->cmd_module_example_example_config}</th>
-			<td>{$config->example_config}</td>
+			<td>{$example_config}</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_radio_config}</th>
-			<td>{$config->radio_config}</td>
+			<td>{$radio_config}</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_checkbox_config}</th>
 			<td>
-				<block loop="$config->checkbox_config=>$item">{$item} </block>
+				<block loop="$checkbox_config=>$item">{$item} </block>
 			</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_input_config}</th>
-			<td>{$config->input_config}</td>
+			<td>{$input_config}</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_input_mlang_config}</th>
-			<td>{$config->input_mlang_config}</td>
+			<td>{$input_mlang_config}</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_textarea_config}</th>
-			<td>{$config->textarea_config}</td>
+			<td>{$textarea_config}</td>
 		</tr>
 		<tr>
 			<th>{$lang->cmd_module_example_textarea_mlang_config}</th>
-			<td>{$config->textarea_mlang_config}</td>
+			<td>{$textarea_mlang_config}</td>
 		</tr>
 	</table>
 
+	<p><a href="{getUrl('act','dispModule_exampleList')}">{$lang->cmd_module_example_list}</a></p>
 	<p><a href="{getUrl('act','dispModule_exampleUserInput')}">{$lang->cmd_module_example_user_input}</a></p>
 </div>
