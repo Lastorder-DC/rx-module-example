@@ -1,0 +1,39 @@
+<config autoescape="on" />
+<load target="css/skin.scss" />
+<load target="js/skin.js" />
+
+<div class="module_example">
+	<h2>{$lang->cmd_module_example_user_input}</h2>
+
+	<form method="post" action="#" onsubmit="return false;">
+		<!-- input text 예제 -->
+		<div class="form-group">
+			<label for="user_text">{$lang->cmd_module_example_user_text}</label>
+			<input type="text" name="user_text" id="user_text" value="" />
+		</div>
+
+		<!-- textarea 예제 -->
+		<div class="form-group">
+			<label for="user_textarea">{$lang->cmd_module_example_user_textarea}</label>
+			<textarea name="user_textarea" id="user_textarea" rows="5" cols="40"></textarea>
+		</div>
+
+		<!-- radio 예제 -->
+		<div class="form-group">
+			<label>{$lang->cmd_module_example_user_radio}</label>
+			<label><input type="radio" name="user_radio" value="A" checked="checked" /> {$lang->cmd_module_example_option_a}</label>
+			<label><input type="radio" name="user_radio" value="B" /> {$lang->cmd_module_example_option_b}</label>
+			<label><input type="radio" name="user_radio" value="C" /> {$lang->cmd_module_example_option_c}</label>
+		</div>
+
+		<!-- checkbox 예제 -->
+		<div class="form-group">
+			<label>{$lang->cmd_module_example_user_checkbox}</label>
+			<label><input type="checkbox" name="user_checkbox[]" value="item1" /> {$lang->cmd_module_example_checkbox_item1}</label>
+			<label><input type="checkbox" name="user_checkbox[]" value="item2" /> {$lang->cmd_module_example_checkbox_item2}</label>
+			<label><input type="checkbox" name="user_checkbox[]" value="item3" /> {$lang->cmd_module_example_checkbox_item3}</label>
+		</div>
+	</form>
+
+	<p><a href="{getUrl('act','dispModule_exampleIndex')}">{$lang->cmd_module_example_back_to_index}</a></p>
+</div>

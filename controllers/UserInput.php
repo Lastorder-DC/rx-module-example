@@ -7,12 +7,12 @@ use Context;
 
 /**
  * 라이믹스 모듈 예제
- * 
+ *
  * Copyright (c) Developer
- * 
+ *
  * Generated with https://www.poesis.dev/tools/rxmodulegen
  */
-class Index extends Base
+class UserInput extends Base
 {
 	/**
 	 * 초기화
@@ -26,13 +26,13 @@ class Index extends Base
 		$config = ConfigModel::getConfig();
 		Context::set('config', $config);
 	}
-	
+
 	/**
-	 * 메인 화면 예제
+	 * 유저 입력 화면 예제
 	 */
-	public function dispModule_exampleIndex()
+	public function dispModule_exampleUserInput()
 	{
 		// 뷰 파일명 지정
-		$this->setTemplateFile('index');
+		$this->setTemplateFile('user_input');
 	}
 }
