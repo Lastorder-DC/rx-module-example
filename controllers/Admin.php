@@ -1,12 +1,12 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
 use Rhymix\Framework\Cache;
 use Rhymix\Framework\DB;
 use Rhymix\Framework\Exception;
 use Rhymix\Framework\Storage;
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use BaseObject;
 use Context;
 
@@ -31,7 +31,7 @@ class Admin extends Base
 	/**
 	 * 관리자 설정 화면 예제
 	 */
-	public function dispModule_exampleAdminConfig()
+	public function dispExampleAdminConfig()
 	{
 		// 현재 설정 상태 불러오기
 		$config = ConfigModel::getConfig();
@@ -46,7 +46,7 @@ class Admin extends Base
 	/**
 	 * 관리자 설정 저장 액션 예제
 	 */
-	public function procModule_exampleAdminInsertConfig()
+	public function procExampleAdminInsertConfig()
 	{
 		// 현재 설정 상태 불러오기
 		$config = ConfigModel::getConfig();

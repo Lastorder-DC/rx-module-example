@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -30,7 +30,7 @@ class UserInput extends Base
 	/**
 	 * 유저 입력 화면 예제
 	 */
-	public function dispModule_exampleUserInput()
+	public function dispExampleUserInput()
 	{
 		// 뷰 파일명 지정
 		$this->setTemplateFile('user_input');

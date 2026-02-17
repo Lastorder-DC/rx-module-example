@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -36,7 +36,7 @@ class Index extends Base
 	/**
 	 * 메인 화면 예제
 	 */
-	public function dispModule_exampleIndex()
+	public function dispExampleIndex()
 	{
 		// 뷰 파일명 지정
 		$this->setTemplateFile('index');

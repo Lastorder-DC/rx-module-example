@@ -4,25 +4,25 @@
 	</grants>
 	<actions>
 		<!-- 관리자 액션 -->
-		<action name="dispModule_exampleAdminConfig" class="Controllers\Admin" menu-name="module_example" admin-index="true" />
-		<action name="procModule_exampleAdminInsertConfig" class="Controllers\Admin" />
+		<action name="dispExampleAdminConfig" class="Controllers\Admin" menu-name="example" admin-index="true" />
+		<action name="procExampleAdminInsertConfig" class="Controllers\Admin" />
 		<!-- 메인 화면 예제 -->
-		<action name="dispModule_exampleIndex" class="Controllers\Index" index="true" />
+		<action name="dispExampleIndex" class="Controllers\Index" index="true" />
 		<!-- 글읽기 화면 예제 -->
-		<action name="dispModule_exampleRead" class="Controllers\Read" route="read/$item_srl" />
+		<action name="dispExampleRead" class="Controllers\Read" route="read/$item_srl" />
 		<!-- 글쓰기 화면 예제 -->
-		<action name="dispModule_exampleWrite" class="Controllers\Write">
+		<action name="dispExampleWrite" class="Controllers\Write">
 			<route route="write" />
 			<route route="edit/$item_srl" />
 		</action>
 		<!-- 글쓰기 POST 액션 예제 -->
-		<action name="procModule_exampleWrite" class="Controllers\Write" permission="member" />
+		<action name="procExampleWrite" class="Controllers\Write" permission="member" />
 		<!-- 글 삭제 POST 액션 -->
-		<action name="procModule_exampleDelete" class="Controllers\Delete" permission="member" />
+		<action name="procExampleDelete" class="Controllers\Delete" permission="member" />
 		<!-- 글 목록 화면 -->
-		<action name="dispModule_exampleList" class="Controllers\ItemList" route="list" />
+		<action name="dispExampleList" class="Controllers\ItemList" route="list" />
 		<!-- 유저 입력 화면 예제 -->
-		<action name="dispModule_exampleUserInput" class="Controllers\UserInput" />
+		<action name="dispExampleUserInput" class="Controllers\UserInput" />
 	</actions>
 	<!-- 이벤트 핸들러 (트리거) 선언 -->
 	<eventHandlers>
@@ -31,7 +31,7 @@
 		<eventHandler after="document.deleteDocument" class="Controllers\EventHandlers" method="afterDeleteDocument" />
 	</eventHandlers>
 	<menus>
-		<menu name="module_example" type="all">
+		<menu name="example" type="all">
 			<title xml:lang="ko">라이믹스 모듈 예제</title>
 		</menu>
 	</menus>

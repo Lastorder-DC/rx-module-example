@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -30,7 +30,7 @@ class Write extends Base
 	/**
 	 * 글쓰기 화면 예제
 	 */
-	public function dispModule_exampleWrite()
+	public function dispExampleWrite()
 	{
 		// 수정 모드인 경우 기존 글 데이터 가져오기
 		$item_srl = Context::get('item_srl');
@@ -38,7 +38,7 @@ class Write extends Base
 		{
 			$args = new \stdClass;
 			$args->item_srl = $item_srl;
-			$output = executeQuery('module_example.getItem', $args);
+			$output = executeQuery('example.getItem', $args);
 			if ($output->toBool() && $output->data)
 			{
 				// 작성자 본인 확인
@@ -58,7 +58,7 @@ class Write extends Base
 	/**
 	 * 글쓰기 POST 액션 예제
 	 */
-	public function procModule_exampleWrite()
+	public function procExampleWrite()
 	{
 		// 로그인 확인
 		$logged_info = Context::get('logged_info');
@@ -86,7 +86,7 @@ class Write extends Base
 			// 기존 글 확인
 			$args = new \stdClass;
 			$args->item_srl = $item_srl;
-			$output = executeQuery('module_example.getItem', $args);
+			$output = executeQuery('example.getItem', $args);
 			if (!$output->toBool() || !$output->data)
 			{
 				return new \BaseObject(-1, 'msg_not_founded');
@@ -104,7 +104,7 @@ class Write extends Base
 			$update_args->title = $title;
 			$update_args->content = $content;
 			$update_args->last_update = date('YmdHis');
-			$output = executeQuery('module_example.updateItem', $update_args);
+			$output = executeQuery('example.updateItem', $update_args);
 			if (!$output->toBool())
 			{
 				return $output;
@@ -127,7 +127,7 @@ class Write extends Base
 			$args->regdate = date('YmdHis');
 			$args->last_update = date('YmdHis');
 			$args->ipaddress = \RX_CLIENT_IP;
-			$output = executeQuery('module_example.insertItem', $args);
+			$output = executeQuery('example.insertItem', $args);
 			if (!$output->toBool())
 			{
 				return $output;
@@ -136,6 +136,6 @@ class Write extends Base
 
 		// 작성된 글로 리다이렉트
 		$this->setMessage('success_registed');
-		$this->setRedirectUrl(getNotEncodedUrl('', 'mid', $this->mid, 'act', 'dispModule_exampleRead', 'item_srl', $item_srl));
+		$this->setRedirectUrl(getNotEncodedUrl('', 'mid', $this->mid, 'act', 'dispExampleRead', 'item_srl', $item_srl));
 	}
 }

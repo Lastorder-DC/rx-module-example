@@ -8,18 +8,18 @@
 </div>
 
 <ul class="x_nav x_nav-tabs">
-	<li @class(['x_active' => $act === 'dispModule_exampleAdminConfig'])>
-		<a href="@url(['module' => 'admin', 'act' => 'dispModule_exampleAdminConfig'])">{{ $lang->cmd_module_example_general_config }}</a>
+	<li @class(['x_active' => $act === 'dispExampleAdminConfig'])>
+		<a href="@url(['module' => 'admin', 'act' => 'dispExampleAdminConfig'])">{{ $lang->cmd_module_example_general_config }}</a>
 	</li>
 </ul>
 
 <form class="x_form-horizontal" action="./" method="post" id="module_example">
-	<input type="hidden" name="module" value="module_example" />
-	<input type="hidden" name="act" value="procModule_exampleAdminInsertConfig" />
+	<input type="hidden" name="module" value="example" />
+	<input type="hidden" name="act" value="procExampleAdminInsertConfig" />
 	<input type="hidden" name="success_return_url" value="{{ getRequestUriByServerEnviroment() }}" />
-	<input type="hidden" name="xe_validator_id" value="modules/module_example/views/admin/config/1" />
+	<input type="hidden" name="xe_validator_id" value="modules/example/views/admin/config/1" />
 
-	@if (!empty($XE_VALIDATOR_MESSAGE) && $XE_VALIDATOR_ID == 'modules/module_example/views/admin/config/1')
+	@if (!empty($XE_VALIDATOR_MESSAGE) && $XE_VALIDATOR_ID == 'modules/example/views/admin/config/1')
 		<div class="message {{ $XE_VALIDATOR_MESSAGE_TYPE }}">
 			<p>{{ $XE_VALIDATOR_MESSAGE }}</p>
 		</div>

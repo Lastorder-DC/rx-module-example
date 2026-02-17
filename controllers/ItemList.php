@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -30,7 +30,7 @@ class ItemList extends Base
 	/**
 	 * 글 목록 화면
 	 */
-	public function dispModule_exampleList()
+	public function dispExampleList()
 	{
 		// 페이지 번호
 		$page = max(1, intval(Context::get('page')));
@@ -42,7 +42,7 @@ class ItemList extends Base
 		$args->list_count = 20;
 		$args->page_count = 10;
 		$args->sort_index = 'item_srl';
-		$output = executeQuery('module_example.getItemList', $args);
+		$output = executeQuery('example.getItemList', $args);
 
 		// 목록 데이터를 Context에 세팅
 		Context::set('item_list', $output->data ?: []);

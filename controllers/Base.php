@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
 /**
  * 라이믹스 모듈 예제

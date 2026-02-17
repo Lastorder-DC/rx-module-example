@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -30,7 +30,7 @@ class Read extends Base
 	/**
 	 * 글읽기 화면 예제
 	 */
-	public function dispModule_exampleRead()
+	public function dispExampleRead()
 	{
 		// 글번호 받아오기
 		$item_srl = Context::get('item_srl');
@@ -42,7 +42,7 @@ class Read extends Base
 		// DB에서 글 가져오기
 		$args = new \stdClass;
 		$args->item_srl = $item_srl;
-		$output = executeQuery('module_example.getItem', $args);
+		$output = executeQuery('example.getItem', $args);
 		if (!$output->toBool() || !$output->data)
 		{
 			return $this->stop('msg_not_founded');

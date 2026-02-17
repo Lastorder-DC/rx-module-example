@@ -1,8 +1,8 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Controllers;
+namespace Rhymix\Modules\Example\Controllers;
 
-use Rhymix\Modules\Module_example\Models\Config as ConfigModel;
+use Rhymix\Modules\Example\Models\Config as ConfigModel;
 use Context;
 
 /**
@@ -24,7 +24,7 @@ class Delete extends Base
 	/**
 	 * 글 삭제 POST 액션
 	 */
-	public function procModule_exampleDelete()
+	public function procExampleDelete()
 	{
 		// 로그인 확인
 		$logged_info = Context::get('logged_info');
@@ -43,7 +43,7 @@ class Delete extends Base
 		// 기존 글 확인
 		$args = new \stdClass;
 		$args->item_srl = $item_srl;
-		$output = executeQuery('module_example.getItem', $args);
+		$output = executeQuery('example.getItem', $args);
 		if (!$output->toBool() || !$output->data)
 		{
 			return new \BaseObject(-1, 'msg_not_founded');
@@ -58,7 +58,7 @@ class Delete extends Base
 		// 삭제 실행
 		$del_args = new \stdClass;
 		$del_args->item_srl = $item_srl;
-		$output = executeQuery('module_example.deleteItem', $del_args);
+		$output = executeQuery('example.deleteItem', $del_args);
 		if (!$output->toBool())
 		{
 			return $output;
@@ -66,6 +66,6 @@ class Delete extends Base
 
 		// 목록으로 리다이렉트
 		$this->setMessage('success_deleted');
-		$this->setRedirectUrl(getNotEncodedUrl('', 'mid', $this->mid, 'act', 'dispModule_exampleList'));
+		$this->setRedirectUrl(getNotEncodedUrl('', 'mid', $this->mid, 'act', 'dispExampleList'));
 	}
 }

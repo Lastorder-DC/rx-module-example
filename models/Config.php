@@ -1,6 +1,6 @@
 <?php
 
-namespace Rhymix\Modules\Module_example\Models;
+namespace Rhymix\Modules\Example\Models;
 
 use ModuleController;
 use ModuleModel;
@@ -31,7 +31,7 @@ class Config
 	{
 		if (self::$_cache === null)
 		{
-			self::$_cache = ModuleModel::getModuleConfig('module_example') ?: new \stdClass;
+			self::$_cache = ModuleModel::getModuleConfig('example') ?: new \stdClass;
 		}
 		return self::$_cache;
 	}
@@ -48,7 +48,7 @@ class Config
 	public static function setConfig($config)
 	{
 		$oModuleController = ModuleController::getInstance();
-		$result = $oModuleController->insertModuleConfig('module_example', $config);
+		$result = $oModuleController->insertModuleConfig('example', $config);
 		if ($result->toBool())
 		{
 			self::$_cache = $config;
